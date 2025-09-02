@@ -4,39 +4,403 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syed Rahmath - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --primary: #2563eb;
+      --secondary: #3b82f6;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --accent: #f97316;
+    }
+    
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
       line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      scroll-behavior: smooth;
     }
+    
+    /* Header */
     header {
-      background: #333;
-      color: #fff;
-      padding: 20px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      animation: fadeInDown 1s ease;
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(45deg, var(--light), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: scaleIn 1s ease;
+      border: 4px solid white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .profile-img i {
+      font-size: 4rem;
+      color: white;
+    }
+    
+    /* Navigation */
     nav {
-      background: #444;
-      padding: 10px;
+      background: white;
+      padding: 1.2rem;
       text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+    
     nav a {
-      color: #fff;
+      color: var(--dark);
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 1.2rem;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
     }
+    
+    nav a:hover {
+      color: var(--primary);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    /* Sections */
     section {
-      padding: 40px;
-      text-align: center;
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    footer {
-      background: #333;
-      color: #fff;
+    
+    section h2 {
       text-align: center;
-      padding: 15px;
-      margin-top: 20px;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    /* Home Section */
+    #home {
+      text-align: center;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+    
+    #home p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--gray);
+    }
+    
+    /* About Section */
+    #about {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin: 2rem auto;
+    }
+    
+    #about p {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .skill-category {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+    
+    .skill-category h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .skill-category h3 i {
+      margin-right: 10px;
+    }
+    
+    .skill-category p {
+      line-height: 1.8;
+    }
+    
+    /* Education Section */
+    #education {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border-radius: 10px;
+      margin: 2rem auto;
+    }
+    
+    #education h2 {
+      color: white;
+    }
+    
+    #education h2::after {
+      background: var(--accent);
+    }
+    
+    .education-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+    
+    .contact-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .contact-item a {
+      color: var(--dark);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .contact-item a:hover {
+      color: var(--primary);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+    
+    .social-links {
+      margin-bottom: 1rem;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: var(--accent);
+    }
+    
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      nav a {
+        margin: 0 0.5rem;
+        font-size: 0.9rem;
+      }
+      
+      section {
+        padding: 3rem 1.5rem;
+      }
+      
+      section h2 {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      nav {
+        padding: 0.8rem;
+      }
+      
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+      
+      .profile-img {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .profile-img i {
+        font-size: 3rem;
+      }
     }
   </style>
 </head>
@@ -44,61 +408,106 @@
 
   <!-- Header -->
   <header>
-    <h1>Syed Rahmath</h1>
-    <p>Computer Science & Engineering Student | DevOps Enthusiast</p>
+    <div class="header-content">
+      <div class="profile-img">
+        <i class="fas fa-user"></i>
+      </div>
+      <h1>Syed Rahmath</h1>
+      <p>Computer Science & Engineering Student | DevOps Enthusiast</p>
+    </div>
   </header>
 
   <!-- Navigation -->
   <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
+    <a href="#home"><i class="fas fa-home"></i> Home</a>
+    <a href="#about"><i class="fas fa-user"></i> About</a>
+    <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+    <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
   </nav>
 
   <!-- Home Section -->
   <section id="home">
     <h2>Welcome to My Portfolio</h2>
-    <p>Hi, I’m Syed Rahmath, a passionate CSE student exploring Software Development and DevOps.</p>
+    <p>Hi, I'm Syed Rahmath, a passionate Computer Science and Engineering student with expertise in Software Development and DevOps. I enjoy building scalable applications and exploring innovative technologies.</p>
   </section>
 
   <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
-    <p>I am a Computer Science and Engineering student with strong problem-solving skills and hands-on 
-       experience in full stack development, RESTful APIs, and DevOps tools. I enjoy building scalable 
-       applications and exploring cloud and automation technologies.</p>
+    <p>I am a Computer Science and Engineering student with strong problem-solving skills and hands-on experience in full stack development, RESTful APIs, and DevOps tools. I enjoy building scalable applications and exploring cloud and automation technologies. My goal is to create efficient, user-friendly solutions that make a positive impact.</p>
   </section>
 
   <!-- Skills Section -->
   <section id="skills">
     <h2>Technical Skills</h2>
-    <p><b>Programming:</b> C, C++, Java, Python, JavaScript, SQL</p>
-    <p><b>Web:</b> HTML5, CSS3, ReactJS, NodeJS, ExpressJS</p>
-    <p><b>Databases:</b> SQL, MongoDB</p>
-    <p><b>DevOps & Tools:</b> Git, GitHub, Linux, Bash, Basic AWS, Docker, Kubernetes, Jenkins, Monitoring Stack</p>
+    <div class="skills-container">
+      <div class="skill-category">
+        <h3><i class="fas fa-laptop-code"></i> Programming</h3>
+        <p>C, C++, Java, Python, JavaScript, SQL</p>
+      </div>
+      <div class="skill-category">
+        <h3><i class="fas fa-globe"></i> Web Technologies</h3>
+        <p>HTML5, CSS3, ReactJS, NodeJS, ExpressJS</p>
+      </div>
+      <div class="skill-category">
+        <h3><i class="fas fa-database"></i> Databases</h3>
+        <p>SQL, MongoDB</p>
+      </div>
+      <div class="skill-category">
+        <h3><i class="fas fa-tools"></i> DevOps & Tools</h3>
+        <p>Git, GitHub, Linux, Bash, Basic AWS, Docker, Kubernetes, Jenkins, Monitoring Stack</p>
+      </div>
+    </div>
   </section>
 
   <!-- Education Section -->
   <section id="education">
     <h2>Education</h2>
-    <p><b>Bachelor of Technology (B.Tech) in Computer Science and Engineering</b><br>
-       CSI Wesley Institute of Technology and Science, Hyderabad, Telangana<br>
-       Aug 2021 – May 2025</p>
+    <div class="education-item">
+      <h3>Bachelor of Technology (B.Tech) in Computer Science and Engineering</h3>
+      <p>CSI Wesley Institute of Technology and Science, Hyderabad, Telangana</p>
+      <p><i class="far fa-calendar-alt"></i> Aug 2021 – May 2025</p>
+    </div>
   </section>
 
   <!-- Contact Section -->
   <section id="contact">
     <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:syedrahmath102@gmail.com">syedrahmath102@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/rahmathsyed" target="_blank">linkedin.com/in/rahmathsyed</a></p>
-    <p>Phone: +91 62818 41595</p>
+    <div class="contact-container">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3>Email</h3>
+        <p><a href="mailto:syedrahmath102@gmail.com">syedrahmath102@gmail.com</a></p>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fab fa-linkedin"></i>
+        </div>
+        <h3>LinkedIn</h3>
+        <p><a href="https://linkedin.com/in/rahmathsyed" target="_blank">linkedin.com/in/rahmathsyed</a></p>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <h3>Phone</h3>
+        <p>+91 62818 41595</p>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
+    <div class="social-links">
+      <a href="https://linkedin.com/in/rahmathsyed" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:syedrahmath102@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
     <p>© 2025 Syed Rahmath | Portfolio</p>
   </footer>
 
 </body>
+</html>
